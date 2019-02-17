@@ -14,9 +14,7 @@ void init() {
     p = malloc(sizeof(char) * 30000);
 
     s = malloc(sizeof(struct Scan));
-    //s->input = "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++.+.+.>++++++++++.";
     s->input = "+++++++++[>++++++++>+++++++++++>+++>+<<<<-]>.>++.+++++++..+++.>+++++.<<+++++++++++++++.>.+++.------.--------.>+.>+.";
-    //s->input = "+++[-]";
     s->pos = 0;
 }
 
@@ -79,6 +77,9 @@ void read_char() {
             break;
         case ']':
             break;
+        default:
+            printf("invalid character: %c\n", s->input[s->pos]);
+            exit(1);
     }
 }
 
