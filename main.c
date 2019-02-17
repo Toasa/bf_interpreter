@@ -41,14 +41,21 @@ int get_pos(char c) {
 
 // for debug
 void check_p() {
+    printf("\n ");
     for (int i = 0; i < 20; i++) {
-        printf("%d ", p_org[i] - '\0');
+        printf("%3d ", p_org[i] - '\0');
     }
+
     printf("\n");
+    int p_pos = p - p_org;
+    for (int i = 0; i < 4 * p_pos; i++) {
+        putchar(' ');
+    }
+    printf("   ^\n");
 }
 
 void read_char() {
-    // check_p();
+    //check_p();
     int src, dst;
     switch (s->input[s->pos]) {
         case '+':
