@@ -12,9 +12,8 @@ struct Scan *s;
 
 void init() {
     p = malloc(sizeof(char) * 30000);
-
     s = malloc(sizeof(struct Scan));
-    s->input = "+++++++++[>++++++++>+++++++++++>+++>+<<<<-]>.>++.+++++++..+++.>+++++.<<+++++++++++++++.>.+++.------.--------.>+.>+.";
+    s->input = malloc(sizeof(char) * 4096);
     s->pos = 0;
 }
 
@@ -53,7 +52,7 @@ void check_p() {
 }
 
 void read_char() {
-    //check_p();
+    // check_p();
     int src, dst;
     switch (s->input[s->pos]) {
         case '+':
@@ -62,6 +61,8 @@ void read_char() {
             *p -= 1; break;
         case '.':
             putchar(*p); break;
+        case ',':
+            *p = getchar(); break;
         case '>':
             p++; break;
         case '<':
@@ -77,6 +78,10 @@ void read_char() {
             break;
         case ']':
             break;
+        case '\n':
+        case '\t':
+        case ' ':
+            break;
         default:
             printf("invalid character: %c\n", s->input[s->pos]);
             exit(1);
@@ -90,9 +95,22 @@ void read() {
     }
 }
 
+void open() {
+    FILE *fp = fopen("./inputs/echo.bf", "r");
+    char c;
+    char *org = s->input;
+    while ((c = fgetc(fp)) != EOF) {
+        *(s->input) = c;
+        (s->input)++;
+    }
+    *(s->input) = '\0';
+    s->input = org;
+}
+
 int main() {
     init();
     p_org = p;
+    open();
     read();
 
     return 0;
