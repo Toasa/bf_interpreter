@@ -96,7 +96,7 @@ void read() {
 }
 
 void open() {
-    FILE *fp = fopen("./inputs/echo.bf", "r");
+    FILE *fp = fopen("./inputs/hello.bf", "r");
     char c;
     char *org = s->input;
     while ((c = fgetc(fp)) != EOF) {

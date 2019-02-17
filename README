@@ -1,3 +1,3 @@
 This is simple brainf*ck(bf) interpreter(not compiler).
 
-I implemented the scanner that reads bf-code consist of 8 instructions.
+I implemented the scanner that reads bf-code consist of 8 instructions(+-.,><[]).
